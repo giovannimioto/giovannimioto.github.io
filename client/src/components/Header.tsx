@@ -4,7 +4,7 @@
 import { contact } from "@/lib/portfolio-data";
 import { Github, Linkedin, Mail } from "lucide-react";
 
-type Tab = "home" | "experience" | "projects" | "skills" | "contact";
+type Tab = "home" | "experience" | "projects" | "contact";
 
 interface HeaderProps {
   activeTab: Tab;
@@ -15,7 +15,6 @@ const tabs: { id: Tab; label: string }[] = [
   { id: "home", label: "Home" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
   { id: "contact", label: "Contact" },
 ];
 

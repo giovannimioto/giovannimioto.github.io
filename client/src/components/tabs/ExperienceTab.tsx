@@ -1,12 +1,11 @@
-// ExperienceTab — professional experience + extracurricular
-// Design: clean list with subtle dividers, no heavy cards
-import { experience, extracurricular } from "@/lib/portfolio-data";
+// ExperienceTab — professional experience only
+import { experience } from "@/lib/portfolio-data";
 
 export default function ExperienceTab() {
   return (
-    <div className="fade-in py-12 md:py-16">
+    <div className="fade-in py-12 md:py-16 max-w-3xl mx-auto">
       {/* Professional Experience */}
-      <section className="mb-14">
+      <section>
         <h2 className="section-title">Professional Experience</h2>
         <div className="space-y-10">
           {experience.map((exp, i) => (
@@ -52,25 +51,6 @@ export default function ExperienceTab() {
                   </ul>
                 </div>
               )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Extracurricular */}
-      <section>
-        <h2 className="section-title">Extracurricular & Volunteering</h2>
-        <div className="space-y-8">
-          {extracurricular.map((item, i) => (
-            <div key={i} className="border-t border-border pt-6 first:border-t-0 first:pt-0">
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
-                <div>
-                  <p className="entry-title">{item.title}</p>
-                  <p className="entry-meta">{item.role}</p>
-                </div>
-                <p className="entry-meta flex-shrink-0">{item.period}</p>
-              </div>
-              <p className="text-sm text-foreground leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
