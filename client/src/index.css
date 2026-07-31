@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -43,8 +42,6 @@
 }
 
 :root {
-  /* Giovanni Mioto Portfolio — Clean Academic Light Theme */
-  /* Inspired by viniciusmioto.com: minimal, typographic, whitespace-driven */
   --radius: 0.375rem;
   --background: oklch(0.99 0.002 240);
   --foreground: oklch(0.18 0.01 240);
@@ -80,19 +77,72 @@
   --chart-5: oklch(0.48 0.11 320);
 }
 
+.dark {
+  /* Giovanni Mioto Portfolio — Clean Academic Dark Theme */
+  --background: oklch(0.14 0.01 240);
+  --foreground: oklch(0.95 0.005 240);
+  --card: oklch(0.17 0.01 240);
+  --card-foreground: oklch(0.95 0.005 240);
+  --popover: oklch(0.14 0.01 240);
+  --popover-foreground: oklch(0.95 0.005 240);
+
+  /* Cores primárias mais claras para contraste no fundo escuro */
+  --primary: oklch(0.85 0.05 240);
+  --primary-foreground: oklch(0.14 0.01 240);
+
+  --secondary: oklch(0.22 0.015 240);
+  --secondary-foreground: oklch(0.95 0.005 240);
+
+  --muted: oklch(0.22 0.015 240);
+  --muted-foreground: oklch(0.7 0.01 240);
+
+  --accent: oklch(0.22 0.015 240);
+  --accent-foreground: oklch(0.95 0.005 240);
+
+  /* Links e marca em um azul mais vibrante e legível */
+  --link: oklch(0.75 0.12 240);
+  --brand: oklch(0.75 0.12 240);
+
+  --destructive: oklch(0.45 0.2 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.25 0.01 240);
+  --input: oklch(0.25 0.01 240);
+  --ring: oklch(0.75 0.12 240);
+
+  --sidebar: oklch(0.17 0.01 240);
+  --sidebar-foreground: oklch(0.95 0.005 240);
+  --sidebar-accent: oklch(0.22 0.015 240);
+  --sidebar-accent-foreground: oklch(0.95 0.005 240);
+  --sidebar-border: oklch(0.25 0.01 240);
+  --sidebar-ring: oklch(0.75 0.12 240);
+
+  /* Ajuste sutil nos gráficos para não ficarem "apagados" no escuro */
+  --chart-1: oklch(0.65 0.15 240);
+  --chart-2: oklch(0.7 0.12 200);
+  --chart-3: oklch(0.75 0.1 160);
+  --chart-4: oklch(0.72 0.13 280);
+  --chart-5: oklch(0.68 0.11 320);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
     font-size: 15px;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lora', Georgia, serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Lora", Georgia, serif;
     font-weight: 500;
     line-height: 1.3;
   }
@@ -134,7 +184,7 @@
     .container {
       padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 860px;
+      max-width: 1280px;
     }
   }
 
@@ -150,57 +200,61 @@
   }
 
   .tech-tag {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 0.25rem;
-  background: oklch(0.93 0.012 240);
-  color: oklch(0.32 0.12 240);
-  font-size: 0.78rem;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-}
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.25rem;
+    background: var(--muted);
+    color: var(--brand); /* Usando a cor da marca para destacar sutilmente */
+    font-size: 0.78rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
 
   .nav-tab {
     font-size: 0.875rem;
     font-weight: 500;
-    color: oklch(0.52 0.012 240);
+    color: var(--muted-foreground);
     padding: 0.25rem 0;
     border-bottom: 2px solid transparent;
-    transition: color 0.15s ease, border-color 0.15s ease;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease;
     text-decoration: none;
     cursor: pointer;
   }
+
   .nav-tab:hover {
-    color: oklch(0.18 0.01 240);
+    color: var(--foreground);
   }
+
   .nav-tab.active {
-  color: oklch(0.18 0.01 240);
-  border-bottom-color: oklch(0.38 0.18 240);
-  color: oklch(0.38 0.18 240);
-}
+    color: var(--foreground);
+    border-bottom-color: var(--brand);
+    color: var(--brand);
+  }
 
   .section-title {
-  font-family: 'Lora', Georgia, serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: oklch(0.18 0.01 240);
-  margin-bottom: 1.25rem;
-  letter-spacing: -0.01em;
-  border-bottom: 1px solid oklch(0.88 0.006 240);
-  padding-bottom: 0.6rem;
-}
+    font-family: "Lora", Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.6rem;
+  }
 
   .entry-title {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
-    color: oklch(0.18 0.01 240);
+    color: var(--foreground);
   }
 
   .entry-meta {
     font-size: 0.82rem;
-    color: oklch(0.52 0.012 240);
+    color: var(--muted-foreground);
   }
 }
 
@@ -209,7 +263,13 @@
     animation: fadeIn 0.3s cubic-bezier(0.23, 1, 0.32, 1) both;
   }
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

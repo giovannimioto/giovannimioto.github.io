@@ -1,99 +1,94 @@
 // HomeTab — profile overview, education, languages, skills
-// Design: two-column on desktop, clean typographic hierarchy
+// Design: three-column on desktop, clean typographic hierarchy
 // Brand color: oklch(0.38 0.18 240) — electric indigo-blue
-import { bio, contact, education, languages, skills } from "@/lib/portfolio-data";
+import { bio, contact, education, languages, skills, aboutMe, beyondWork } from "@/lib/portfolio-data";
 import { MapPin, Mail, Github, Linkedin } from "lucide-react";
 
 export default function HomeTab() {
   return (
-    <div className="fade-in py-12 md:py-16 max-w-3xl mx-auto">
-      {/* Profile block */}
-      <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-16">
+    <div className="fade-in py-12 md:py-16 max-w-7xl mx-auto">
+      
+      {/* Container Principal: (Bio) centralizada verticalmente com (Educação + Idiomas) */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12 mb-16 items-center">
         
-        {/* Avatar placeholder */}
-        <div className="flex-shrink-0">
-          <img
-            src="/giovannimioto.jpeg"
-            alt="Giovanni Mioto"
-            className="w-32 h-32 md:w-44 md:h-44 rounded-full object-cover border border-border shadow-md"
-          />
-        </div>
-
-        {/* Bio */}
-        <div className="flex-1 min-w-0">
-          <h1
-            className="text-3xl md:text-4xl font-semibold text-foreground mb-1 text-center md:text-left"
-            style={{ fontFamily: "'Lora', Georgia, serif" }}
-          >
-            {bio.name}
-          </h1>
-          <p className="text-sm font-medium mb-3 text-center md:text-left" style={{ color: "var(--brand)" }}>
-            {bio.headline}
-          </p>
-          
-          <div className="flex items-center justify-center md:justify-start gap-1.5 text-sm text-muted-foreground mb-5">
-            <MapPin className="w-3.5 h-3.5" />
-            <span>{contact.location}</span>
+        {/* Lado Esquerdo (Coluna 1): Profile & Bio */}
+        <div className="lg:col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="flex-shrink-0 mb-6">
+            <img
+              src="/giovannimioto.jpeg"
+              alt="Giovanni Mioto"
+              className="w-32 h-32 md:w-36 md:h-36 rounded-full object-cover border border-border shadow-md"
+            />
           </div>
-          
-          <p className="text-sm text-foreground leading-relaxed max-w-lg mb-5 text-center md:text-left">
-            {bio.description}
-          </p>
-          
-          {/* Contact links */}
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm">
-            <a href={`mailto:${contact.email}`} className="link-blue flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5" />
-              {contact.email}
-            </a>
-            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="link-blue flex items-center gap-1.5">
-              <Linkedin className="w-3.5 h-3.5" />
-              LinkedIn
-            </a>
-            <a href={contact.github} target="_blank" rel="noopener noreferrer" className="link-blue flex items-center gap-1.5">
-              <Github className="w-3.5 h-3.5" />
-              GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Two-column: Education + Languages */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-        {/* Education */}
-        <div>
-          <h2 className="section-title">Education</h2>
-          <div className="space-y-5">
-            {education.map((edu, i) => (
-              <div key={i}>
-                <p className="entry-title">{edu.degree}</p>
-                <p className="text-sm text-foreground">{edu.institution}</p>
-                <p className="entry-meta">{edu.location} · {edu.period}</p>
-              </div>
-            ))}
+          <div className="w-full">
+            <h1
+              className="text-3xl font-semibold text-foreground mb-1"
+              style={{ fontFamily: "'Lora', Georgia, serif" }}
+            >
+              {bio.name}
+            </h1>
+            <p className="text-sm font-medium mb-3" style={{ color: "var(--brand)" }}>
+              {bio.headline}
+            </p>
+            
+            <div className="flex items-center justify-center lg:justify-start gap-1.5 text-sm text-muted-foreground mb-5">
+              <MapPin className="w-3.5 h-3.5" />
+              <span>{contact.location}</span>
+            </div>
+            
+            <p className="text-[14.5px] text-foreground leading-relaxed">
+              {bio.description}
+            </p>
           </div>
         </div>
 
-        {/* Languages */}
-        <div className="space-y-10">
+        {/* Lado Direito (Colunas 2 e 3): Agrupados e alinhados ao topo (items-start) */}
+        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12 items-start">
+          
+          {/* Column 2: Education */}
+          <div>
+            <h2 className="section-title">Education</h2>
+            <div className="space-y-6">
+              {education.map((edu, i) => (
+                <div key={i}>
+                  <p className="entry-title">{edu.degree}</p>
+                  <p className="text-sm text-foreground">{edu.institution}</p>
+                  <p className="entry-meta mt-0.5">{edu.location} · {edu.period}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Column 3: Languages */}
           <div>
             <h2 className="section-title">Languages</h2>
-            <div className="space-y-1.5">
+            <div className="space-y-3">
               {languages.map((lang, i) => (
-                <div key={i} className="flex items-center justify-between text-sm">
-                  <span className="text-foreground">{lang.language}</span>
+                <div key={i} className="flex items-center justify-between text-[15px]">
+                  <span className="text-foreground font-medium">{lang.language}</span>
                   <span className="entry-meta">{lang.level}</span>
                 </div>
               ))}
             </div>
           </div>
+
         </div>
       </div>
 
-      {/* Skills Section (Movida para a Home) */}
+      {/* About Me Section */}
+      <section className="mb-16">
+        <h2 className="section-title">About Me</h2>
+        <div className="space-y-4 text-foreground text-[15px] leading-relaxed">
+          {aboutMe.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+      </section>
+
+      {/* Skills Section */}
       <section>
         <h2 className="section-title">Skills & Technologies</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="flex flex-col gap-6">
           {skills.map((skillGroup, i) => (
             <div 
               key={i} 
@@ -123,6 +118,17 @@ export default function HomeTab() {
                 ))}
               </div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Beyond Work Section */}
+      <section className="mb-12 md:mb-16">
+        <div className="my-12 md:my-16"></div>
+        <h2 className="section-title">Beyond Work</h2>
+        <div className="space-y-4 text-foreground text-[15px] leading-relaxed">
+          {beyondWork.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
           ))}
         </div>
       </section>

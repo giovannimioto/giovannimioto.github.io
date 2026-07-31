@@ -5,9 +5,8 @@ import Header from "@/components/Header";
 import HomeTab from "@/components/tabs/HomeTab";
 import ExperienceTab from "@/components/tabs/ExperienceTab";
 import ProjectsTab from "@/components/tabs/ProjectsTab";
-import ContactTab from "@/components/tabs/ContactTab";
 
-type Tab = "home" | "experience" | "projects" | "contact";
+type Tab = "home" | "experience" | "projects";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>("home");
@@ -17,7 +16,6 @@ export default function Home() {
       case "home":       return <HomeTab />;
       case "experience": return <ExperienceTab />;
       case "projects":   return <ProjectsTab />;
-      case "contact":    return <ContactTab />;
     }
   };
 
