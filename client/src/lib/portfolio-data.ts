@@ -18,7 +18,7 @@ export const beyondWork = [
 export const contact = {
   email: "giovanni.mioto@gmail.com",
   phone: "+55 41 99257-3477",
-  location: "Paraná, Brazil",
+  location: "Curitiba, Paraná, Brazil",
   linkedin: "https://linkedin.com/in/giovanni-mioto-a22b91210",
   github: "https://github.com/giovannimioto"
 };
